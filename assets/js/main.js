@@ -47,26 +47,24 @@ function scrollUp() {
 }
 window.addEventListener("scroll", scrollUp);
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
-const sections = document.querySelectorAll("section[id]");
+const sections = document.querySelectorAll('section[id]')
 
-const scrollActive =() =>{
-  let scrollY = window.pageXOffset
+window.addEventListener('scroll', scrollActive)
 
-  sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 50;
-    const sectionId = current.getAttribute("id");
+function scrollActive(){
+    const scrollY = window.pageYOffset
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
-    } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
-    }
-  });
+    sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 50;
+        sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active')
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active')
+        }
+    })
 }
 window.addEventListener("scroll", scrollActive);
 /*=============== SCROLL REVEAL ANIMATION ===============*/
